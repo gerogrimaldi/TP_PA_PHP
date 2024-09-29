@@ -1,18 +1,9 @@
-<!-- * Desarrollar un formulario de Login (usuario y contraseña) 
- y crear la estructura de directorios que alojen imagenes, 
- javascript, php, css, etc.
 
-* Programación de la cabecera (header)  y del pie (footer) de la aplicación.
-
-* Desarrollar un script PHP denominado "procesoLogin.php", 
-el cual debe validar los datos enviados por el Form 
-y comprobar el correcto ingreso con el usuario y contraseña:
-
-->usuario: fcytuader.
-->contraseña: programacionavanzada.
-
-Si es correcta la autenticación mostrar el texto "ingreso correctamente" 
-en caso contrario informarlo y volver al Form inicial. -->
+<?php
+    session_start(); 
+    $_SESSION['nombre'] = 'Usuario Sesion'; 
+    // $_SESSION['captcha_error'] = false;
+?>
 
 
 <!DOCTYPE html>
@@ -20,7 +11,7 @@ en caso contrario informarlo y volver al Form inicial. -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login Page</title>
+    <title>Grupo 2 - PA UADER</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./css/styles.css">

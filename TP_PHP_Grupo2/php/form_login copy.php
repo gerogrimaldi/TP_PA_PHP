@@ -1,14 +1,7 @@
-<?php
-    $token = rand(5, 1500);
-    $_SESSION ['token'] = $token;
-    // echo $_SESSION['nombre']; 
-?>
+
 
 <!--LOGIN-->
 <form method="post" action="./php/procesoLogin.php">
-    <!-- TOKEN -->
-    <input type="hidden" name="token" id="token" value="<?php echo $token?>">
-
     <div class="mb-4">
         <label for="username" class="form-label">Usuario</label>
         <input type="text" id="username" name="username" class="form-control" required>
@@ -23,14 +16,9 @@
     </div>
     <div class="d-grid">
         <!-- CAPTCHA -->
-        <?php
-            if ($_SESSION['captcha_error']==1){
-                echo ("ERROR: Ingrese el captcha");
-            }
-        ?>
         <div class="g-recaptcha" data-sitekey="6LfMnkkqAAAAAI10IzlGrCVlcge0CAcxMozY_jBL" required></div>
         <br/>
-        <button type="submit" id="submit" name="submit" class="btn btn-primary">Iniciar Sesion</button>
+        <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
     </div>
     <div class="my-3">
         <span>No tienes Cuenta? <a href="#">Regístrate</a></span><br>
@@ -39,9 +27,9 @@
 </form>
 
 <?php
-    // if (isset($_POST['username'])){
-    //     require "captcha_process.php";
-    // }
+    if (isset($_POST['username'])){
+        require "captcha_process.php";
+    }
 ?>
 
 <!--Login con Redes-->

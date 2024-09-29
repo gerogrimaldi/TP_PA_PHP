@@ -1,56 +1,46 @@
 <?php
-    
-    $usuario = "fcytuader";
-    $contrasenia = "programacionavanzada";
+    session_start(); 
+    echo "<br>USUARIO: ".$_SESSION['nombre']."<br>";
+    // Verifico token del form
+    if($_POST['token'] == $_SESSION['token']){
+        //claves
+        echo "<br>TOKEN: ".$_SESSION['token']."<br>"; 
 
-    $error = '';
-    $errMsg = '';
+// #################################################################################
+// MANEJO CAPTCHA
+    require_once ("captcha_process.php");
+
+// #################################################################################
+//verifico usuario y contraseña
+    if($_SESSION ['captcha']){
+        echo "<br>EJECUTO VALIDACION<br>";
+        $usuario = "fcytuader";
+        $contrasenia = "programacionavanzada";
     
-    if (isset($_POST['username'])) { // Cambia 'name' a 'username'
-        // Verificar si el CAPTCHA está completado
-        if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
-            // Verificar el CAPTCHA
-            $secret_key = "6LfMnkkqAAAAAI10IzlGrCVlcge0CAcxMozY_jBL"; // Asegúrate de usar la clave secreta correcta
-            $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secret_key&response=" . $_POST['g-recaptcha-response'];
-            $verify = json_decode(file_get_contents($url));
-    
-            // Seguir si es válido
-            if ($verify->success) {
-                // Aquí puedes realizar el proceso de inicio de sesión
-                // Validar usuario y contraseña...
-    
-                echo "Inicio de sesión exitoso"; // O redirigir a otra página
-            } else {
-                $error = "Invalid Captcha.";
-            }
-        } else {
-            $errMsg = 'Por favor, complete el CAPTCHA.';
-        }
-    
-        // Resultado
-        if ($error != "") {
-            echo $error;
-        } elseif ($errMsg != "") {
-            echo $errMsg;
-        }
-    }
-    
-    if($_POST['username'] == $usuario && $_POST['password'] == $contrasenia){
-        echo
-        (
+        if($_POST['username'] == $usuario && $_POST['password'] == $contrasenia){
+            echo
+            (
+                "<div>
+                    <h2>Ingreso correcto</h2>
+                    <a href='../index.php'>Volver</a>
+                </div>"
+            );
+        }else{
+            echo
+            (
             "<div>
-                <h2>Ingreso correcto</h2>
-                <a href='../index.php'>Volver</a>
+                <h2>Usuario o contraseña incorrecto</h2>
+                <a href='../index.php'>Volver a intentar</a>
             </div>"
-        );
-    }else{
-        echo
-        (
-        "<div>
-            <h2>Usuario o contraseña incorrecto</h2>
-            <a href='../index.php'>Volver a intentar</a>
-        </div>"
-        );
+            );
+            }
+        }else {
+            // Si hay un error en el CAPTCHA, redirijo a la misma página
+            // Guardar el mensaje de error en la sesión para mostrarlo más tarde
+            $_SESSION['captcha_error'] = true;
+            header("Location: ../index.php"); // Cambia esto a la ruta correcta
+            exit();
+        }
     }
 ?>
 
