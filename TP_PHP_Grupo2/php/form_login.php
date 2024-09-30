@@ -40,7 +40,7 @@
         ?>
         <div class="g-recaptcha" data-sitekey="6LfMnkkqAAAAAI10IzlGrCVlcge0CAcxMozY_jBL" required></div>
         <br/>
-        <button type="submit" id="submit" name="submit" class="btn btn-primary">Iniciar Sesion</button>
+        <button type="submit" id="submit" name="submit" class="btn btn-primary  text-wrap">Iniciar Sesion</button>
     </div>
     <div class="my-3">
         <span>No tienes Cuenta? <a href="#">Regístrate</a></span><br>

@@ -18,6 +18,7 @@
         $contrasenia = "programacionavanzada";
     
         if($_POST['username'] == $usuario && $_POST['password'] == $contrasenia){
+            $_SESSION['header'] = $_SESSION['nombre'];
             header("Location: ../inicio.php"); // Cambia esto a la ruta correcta
             exit();
         }else{

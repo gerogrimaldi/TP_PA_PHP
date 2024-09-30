@@ -1,27 +1,20 @@
-/*.form {
-    min-height: 100vh;
-    height: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    backdrop-filter: blur(3px);
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-}
-*/
+  /* body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: hsl(3 100% 4%) !important;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: wheat;   
+    }
 
-/* .form {
-    height: 50vh;
-} */
+  .header{
+    background-color: hsl(3 100% 4%) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: wheat; 
+  }
 
-
-/* .bg-primary {
-    min-height: 70vh; 
-}
-
-footer {
-    background-color: #f1f1f1;
-    padding: 10px;
-    text-align: center;
-} */
+  .my-color{
+    background-color: hsl(3 100% 4%) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: wheat; 
+  } */
