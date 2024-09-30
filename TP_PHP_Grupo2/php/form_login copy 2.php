@@ -8,13 +8,15 @@
 <form method="post" action="./php/procesoLogin.php">
     <!-- TOKEN -->
     <input type="hidden" name="token" id="token" value="<?php echo $token?>">
-
+    
+    <!-- Informe de error LOGIN -->
     <?php
-            if (isset($_SESSION ['login_error'])){
-                echo "<p style='color: red;'>" . $_SESSION['login_error'] . "</p>";
-                // Limpiar la variable de sesión después de mostrar el mensaje
-                unset($_SESSION['login_error']);
-            }
+        // Mostrar error de login si existe
+        if (isset($_SESSION['login_error'])) {
+            echo "<p style='color: red;'>". $_SESSION['login_error'] . "</p>";
+            // Limpio la variable para que no se quede colgado el mensaje
+            unset($_SESSION['login_error']);
+        }
     ?>
 
     <div class="mb-4">
@@ -30,11 +32,12 @@
         <label for="connected" class="form-check-label">Permanecer Conectado</label>
     </div>
     <div class="d-grid">
-        <!-- CAPTCHA -->
+        <!--  Informe de error CAPTCHA --> 
         <?php
-            if (isset($_SESSION ['captcha_error'])){
+        // Mostrar error de CAPTCHA si existe
+            if (isset($_SESSION['captcha_error'])) {
                 echo "<p style='color: red;'>" . $_SESSION['captcha_error'] . "</p>";
-                // Limpiar la variable de sesión después de mostrar el mensaje
+                // Limpio la variable para que no se quede colgado el mensaje
                 unset($_SESSION['captcha_error']);
             }
         ?>

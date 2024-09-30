@@ -18,26 +18,19 @@
         $contrasenia = "programacionavanzada";
     
         if($_POST['username'] == $usuario && $_POST['password'] == $contrasenia){
-            echo
-            (
-                "<div>
-                    <h2>Ingreso correcto</h2>
-                    <a href='../index.php'>Volver</a>
-                </div>"
-            );
+            header("Location: ../inicio.php"); // Cambia esto a la ruta correcta
+            exit();
         }else{
-            echo
-            (
-            "<div>
-                <h2>Usuario o contraseña incorrecto</h2>
-                <a href='../index.php'>Volver a intentar</a>
-            </div>"
-            );
+            // Si hay un error en el LOGIN, redirijo a la misma página
+            // Guardar el mensaje de error en la sesión para mostrarlo más tarde
+            $_SESSION['login_error'] = "Usuario o contraseña incorrectos";
+            header("Location: ../index.php"); // Cambia esto a la ruta correcta
+            exit();
             }
         }else {
             // Si hay un error en el CAPTCHA, redirijo a la misma página
             // Guardar el mensaje de error en la sesión para mostrarlo más tarde
-            $_SESSION['captcha_error'] = true;
+            $_SESSION['captcha_error'] = "Por favor ingrese el captcha";
             header("Location: ../index.php"); // Cambia esto a la ruta correcta
             exit();
         }
